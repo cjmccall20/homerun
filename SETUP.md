@@ -20,7 +20,7 @@ directory if you do not). There is no database and no cloud account.
 | Add to Home Screen (PWA) | app-like feel on the phone | works fine in the browser |
 | Resend account | the optional morning email | no email; the Goals tab is the same information |
 | Actual Budget + SimpleFIN | the Budget tab | Budget tab shows nothing; everything else unaffected |
-| A grocer with a web storefront + the orders sidecar | one-tap "build my cart" | you shop from the list on your phone like a normal person |
+| The orders sidecar (included) + a grocer with a web storefront | one-tap "build my cart" | you shop from the list on your phone like a normal person |
 
 ## Phase 1 - the machine (agent can verify, human installs what is missing)
 
@@ -109,10 +109,21 @@ into a self-hosted Actual Budget server and writes a snapshot JSON the app
 reads. Set `HOMERUN_BUDGET_SNAPSHOT` and `HOMERUN_BUDGET_DATA`, then follow
 `bin/budget-setup.mjs`. Skip freely.
 
-**Grocery cart automation.** Cooper's original drives a logged-in Chrome
-profile against his grocer's storefront via a sidecar repo; it is grocer-specific
-and not included here. The app degrades cleanly: order jobs queue and the list
-is always usable by hand.
+**Grocery cart automation.** Included, in `orders-sidecar/`. One tap on
+"Build cart" in the Grocery tab writes a job file; a launchd agent hands it to
+a three-phase runner (a model call plans the whole list, a mechanical bulk
+pass adds the easy items, a judge pass shops the hard ones) that drives a
+dedicated always-running Chrome, logged into your grocer, over CDP. It fills
+the cart and stops; a hard blocklist in `lib/safety.js` keeps it off checkout
+and payment pages, with tests. The reference implementation targets Publix.
+For any other grocer, `orders-sidecar/README.md` has an "Adapting this to a
+different grocer" section that names exactly which files carry the
+store-specific selectors and the probe-driven method for porting them; it is
+a few focused hours for an agent. Setup: `bin/setup.mjs` already generated the
+sidecar's sandbox; the human steps are logging into the grocer once in the
+dedicated Chrome (`orders-sidecar/bin/start-chrome.sh`) and running
+`orders-sidecar/bin/install-launchd.sh`. Skip freely: order jobs queue
+politely and the list is always usable by hand.
 
 **The self-update loop.** `bin/install-feedback-loop.sh` wires the in-app
 Suggestion Box to a Claude session that edits this repo, verified by tests and

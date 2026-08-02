@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.homerun.chrome</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>{{SIDECAR}}/bin/start-chrome.sh</string>
+    </array>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>ThrottleInterval</key>
+    <integer>30</integer>
+    <key>StandardOutPath</key>
+    <string>{{SIDECAR}}/chrome.log</string>
+    <key>StandardErrorPath</key>
+    <string>{{SIDECAR}}/chrome.err</string>
+</dict>
+</plist>

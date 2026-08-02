@@ -97,6 +97,19 @@ for (const name of ["settings.json", "dev-settings.json"]) {
 writeFileSync(path.join(REPO, "prompts", "feedback.md"), render(path.join(REPO, "prompts", "feedback.md.template")));
 console.log("generated .claude/settings.json, .claude/dev-settings.json, prompts/feedback.md");
 
+// The orders sidecar's sandbox, same treatment. Rendering it here costs
+// nothing if the sidecar is never used.
+const sidecarSettings = path.join(REPO, "orders-sidecar", ".claude", "settings.json.template");
+if (existsSync(sidecarSettings)) {
+  const rendered = readFileSync(sidecarSettings, "utf8")
+    .replaceAll("{{SIDECAR}}", path.join(REPO, "orders-sidecar"))
+    .replaceAll("{{HOMERUN}}", REPO)
+    .replaceAll("{{VAULT}}", vault)
+    .replaceAll("{{VAULT_PARENT}}", vaultParent);
+  writeFileSync(path.join(REPO, "orders-sidecar", ".claude", "settings.json"), rendered);
+  console.log("generated orders-sidecar/.claude/settings.json");
+}
+
 // --- the household name, in code and data format -----------------------------
 // Names live in ~10 source files and in recipe frontmatter keys
 // (rating-<name>). A fresh install has no recipes to migrate, so a plain

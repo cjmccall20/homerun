@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.homerun.order-runner</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>{{SIDECAR}}/bin/run-order.sh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+        <string>{{HOMERUN}}/jobs/orders</string>
+    </array>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+    <key>StandardOutPath</key>
+    <string>{{SIDECAR}}/order-runner.log</string>
+    <key>StandardErrorPath</key>
+    <string>{{SIDECAR}}/order-runner.err</string>
+</dict>
+</plist>

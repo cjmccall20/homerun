@@ -1,0 +1,8 @@
+node_modules/
+chrome-profile/
+.state.json
+*.log
+*.err
+.run-order.lock
+.DS_Store
+jobs/

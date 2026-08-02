@@ -68,3 +68,9 @@ tsconfig.tsbuildinfo
 /.claude/dev-settings.json
 /prompts/feedback.md
 morning-email.err
+# orders sidecar runtime (generated sandbox, logged-in browser profile, logs)
+/orders-sidecar/.claude/settings.json
+/orders-sidecar/chrome-profile/
+/orders-sidecar/node_modules/
+/orders-sidecar/*.log
+/orders-sidecar/*.err

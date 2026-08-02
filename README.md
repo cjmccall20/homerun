@@ -20,7 +20,7 @@ npm test && npm run build && npm start
 
 Read [SETUP.md](SETUP.md) for the optional pieces (phone access over
 Tailscale, add-to-home-screen, the morning email via Resend, the budget tab,
-AI recipe import) and for how to bulk-import recipes from Pinterest or TikTok.
+AI recipe import, one-tap grocery cart building via orders-sidecar/) and for how to bulk-import recipes from Pinterest or TikTok.
 Read [FORHomeRun.md](FORHomeRun.md) for the full tour, and
 [.claude/napkin.md](.claude/napkin.md) for the sharp edges.
 

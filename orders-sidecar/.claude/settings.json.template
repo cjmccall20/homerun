@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/{{VAULT}}/**)",
+      "Read(/{{SIDECAR}}/**)",
+      "Read(/{{HOMERUN}}/jobs/orders/**)",
+      "Edit(/{{HOMERUN}}/jobs/orders/**)",
+      "Bash(node cart.js:*)"
+    ],
+    "deny": [
+      "Agent",
+      "Skill",
+      "WebFetch",
+      "WebSearch",
+      "Edit(/{{VAULT_PARENT}}/**)"
+    ],
+    "defaultMode": "default"
+  },
+  "_comment": "Sandbox for the order runner. Rules are Edit(...) not Write(...): Claude Code matches file permissions on Edit rules only, and an Edit rule covers every file-editing tool. A Write(...) rule looks like a guardrail and enforces nothing."
+}
