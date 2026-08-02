@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.homerun.homerun-feedback</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>{{REPO}}/bin/run-feedback.sh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+        <string>{{REPO}}/jobs/feedback</string>
+    </array>
+    <key>RunAtLoad</key>
+    <false/>
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+    <key>StandardOutPath</key>
+    <string>{{REPO}}/feedback-runner.out</string>
+    <key>StandardErrorPath</key>
+    <string>{{REPO}}/feedback-runner.err</string>
+</dict>
+</plist>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="HomeRun">
+  <rect width="512" height="512" rx="112" fill="#2f7d4f"/>
+  <path d="M256 112 116 232v168h88V296h104v104h88V232L256 112Z" fill="#f7f4ef"/>
+  <circle cx="256" cy="214" r="30" fill="#2f7d4f"/>
+</svg>

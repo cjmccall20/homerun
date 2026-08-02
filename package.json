@@ -1,0 +1,36 @@
+{
+  "name": "homerun",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --port 3010",
+    "build": "next build",
+    "start": "next start -p 3010",
+    "lint": "eslint",
+    "test": "node --test 'tests/**/*.test.ts'",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@actual-app/api": "^26.7.0",
+    "gray-matter": "^4.0.3",
+    "next": "16.2.12",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.12",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}

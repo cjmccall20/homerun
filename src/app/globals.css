@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+/*
+ * HomeRun's whole visual system. Two people, one phone each, usually one hand
+ * free. Everything is sized for a thumb: 48px minimum on anything tappable,
+ * generous line height, and a palette warm enough to look like a kitchen
+ * rather than a dashboard.
+ */
+
+:root {
+  --canvas: #f7f4ef;
+  --surface: #ffffff;
+  --surface-2: #f0ece4;
+  --line: #e2dbd0;
+  --ink: #201d18;
+  --ink-soft: #6b6459;
+  --ink-faint: #9a9186;
+  --accent: #2f7d4f;
+  --accent-ink: #ffffff;
+  --accent-soft: #e4f0e8;
+  --warn: #b4571f;
+  --danger: #a8322c;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #14130f;
+    --surface: #1d1b16;
+    --surface-2: #262319;
+    --line: #33302a;
+    --ink: #f2eee6;
+    --ink-soft: #a9a294;
+    --ink-faint: #7c7568;
+    --accent: #58b57f;
+    --accent-ink: #10210f;
+    --accent-soft: #1e3427;
+    --warn: #e08a4a;
+    --danger: #e0736c;
+  }
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-soft: var(--accent-soft);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  background: var(--canvas);
+}
+
+body {
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  overscroll-behavior-y: none;
+}
+
+/* Inputs must be at least 16px or iOS Safari zooms the page on focus. */
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  font-size: max(1rem, 16px);
+  color: inherit;
+}
+
+::placeholder {
+  color: var(--ink-faint);
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

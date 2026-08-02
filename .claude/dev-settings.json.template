@@ -1,0 +1,33 @@
+{
+  "_comment": "The sandbox for the self-update loop ONLY (bin/run-feedback.sh). The app's own Claude bridge uses settings.json, which is far more restrictive and must stay that way. Deny wins over allow, so the deny list below is the real boundary: this session can rewrite the app but cannot rewrite the rules it runs under, cannot touch the vault, and cannot read any secret. Note the rules are Edit(...) not Write(...): Claude Code matches file permissions on Edit rules only, and an Edit rule covers every file-editing tool including Write. A Write(...) rule here would look like a guardrail and enforce nothing.",
+  "permissions": {
+    "allow": [
+      "Read(/{{REPO}}/**)",
+      "Edit(/{{REPO}}/**)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(git:*)",
+      "Bash(launchctl kickstart:*)"
+    ],
+    "deny": [
+      "Edit(/{{HOME}}/Obsidian/**)",
+      "Read(/{{HOME}}/.claude/**)",
+      "Edit(/{{HOME}}/.claude/**)",
+      "Read(/{{HOME}}/.claude.json)",
+      "Read(/{{HOME}}/.bw-session)",
+      "Read(/{{REPO}}/.env.local)",
+      "Edit(/{{REPO}}/.env.local)",
+      "Edit(/{{REPO}}/.claude/**)",
+      "Edit(/{{REPO}}/bin/**)",
+      "Edit(/{{REPO}}/launchd/**)",
+      "Edit(/{{REPO}}/prompts/**)",
+      "Edit(/{{REPO}}/src/lib/auth.ts)",
+      "Edit(/{{REPO}}/src/proxy.ts)",
+      "WebFetch",
+      "WebSearch",
+      "Agent",
+      "Skill"
+    ],
+    "defaultMode": "default"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/{{VAULT_PARENT}}/**)",
+      "Read(/{{REPO}}/jobs/**)",
+      "Edit(/{{VAULT}}/**)",
+      "WebFetch",
+      "WebSearch"
+    ],
+    "deny": [
+      "Bash",
+      "Agent",
+      "Skill",
+      "NotebookEdit",
+      "Edit(/{{VAULT_PARENT}}/Command/**)",
+      "Edit(/{{VAULT_PARENT}}/System/**)",
+      "Read(/{{REPO}}/.env.local)",
+      "Read(/{{HOME}}/.claude.json)",
+      "Read(/{{HOME}}/.bw-session)"
+    ],
+    "defaultMode": "default"
+  }
+}
